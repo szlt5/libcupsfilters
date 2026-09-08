@@ -404,7 +404,8 @@ cfFilterOptionsCreate(size_t num_options,   // I - Number of command-line option
   ippo->separator_media       = ippo->media;
 
   // Set the rest of the options...
-  if ((value = get_option("outputorder", num_options, options)) != NULL)
+  if ((value = get_option("outputorder", num_options, options)) != NULL ||
+      (value = cupsGetOption("output-order", num_options, options)) != NULL)
   {
     if (!strcasecmp(value, "reverse"))
       ippo->reverse_order = true;
