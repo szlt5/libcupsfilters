@@ -404,7 +404,7 @@ cfFilterOptionsCreate(size_t num_options,   // I - Number of command-line option
   ippo->separator_media       = ippo->media;
 
   // Set the rest of the options...
-  if ((value = get_option("output-order", num_options, options)) != NULL)
+  if ((value = get_option("outputorder", num_options, options)) != NULL)
   {
     if (!strcasecmp(value, "reverse"))
       ippo->reverse_order = true;
@@ -492,9 +492,9 @@ cfFilterOptionsCreate(size_t num_options,   // I - Number of command-line option
   if ((value = get_option("imposition-template", num_options, options)) != NULL ||
       (value = get_option("booklet", num_options, options)) != NULL)
   {
-    if(strcasecmp(value, "yes") ||
-       strcasecmp(value, "true") ||
-       strcasecmp(value, "booklet")) 
+    if(!strcasecmp(value, "yes") ||
+       !strcasecmp(value, "true") ||
+       !strcasecmp(value, "booklet")) 
     {
       cupsCopyString(ippo->imposition_template, "booklet", sizeof(ippo->imposition_template));
     }
